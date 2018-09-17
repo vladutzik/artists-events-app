@@ -1,12 +1,11 @@
 import React from 'react';
-import localforage from 'localforage';
 import { BandsintownInstance as API } from 'Utils/BandsintownApi';
 import { Column, Container, Row } from 'styled-bootstrap-components';
 import EventDetails from 'React/components/eventDetails';
 import ArtistCard from 'React/components/artistCard';
 import Loading from 'React/components/icons/loading';
 import SearchBar from 'React/components/searchBar';
-import ArtsitStorage from 'Storage/Artists';
+import ArtsitStorage from 'Storage/artists';
 
 
 const getEmoji = (emoji) => (<span aria-label="emoji" role="img">{emoji}</span>);
@@ -37,7 +36,9 @@ class App extends React.Component {
     ArtsitStorage.getItem(params.artistName).then(artist => {
       this.setState(state => ({
         ...state,
-        artist: state.artist.isLoading ? artist : state.artist,
+        artist: state.artist.isLoading ? {
+          ...artist,
+        } : state.artist,
       }));
     })
 
@@ -53,10 +54,7 @@ class App extends React.Component {
     API.getArtist(params.artistName).then(artist => {
       if (!artist) return null;
 
-      ArtsitStorage.setItem(artist.name, {
-        ...artist,
-        queryDate: Date.now(),
-      });
+      ArtsitStorage.setItem(artist.name, artist);
       
       return this.setState(state => ({
         ...state,

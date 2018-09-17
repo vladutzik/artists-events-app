@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import axios from 'axios';
 import urlAssembler from 'url-assembler';
-import offlineAdapter from 'axios-offline-adapter';
+import offlineAdapter from 'Lib/axios-offline-adapter';
  
 import { setToken, getToken } from 'Utils/user';
 

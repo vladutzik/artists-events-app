@@ -7,7 +7,12 @@ class Bandsintown extends ApiInterface {
   }
 
   getArtist = (artistName) => {
-    return this.get(this.endpoints.artist, { params: { artistName } });
+    return this.get(this.endpoints.artist, { params: { artistName } })
+      .then(artist => ({
+        ...artist,
+        queryDate: Date.now(),
+        queryString: artistName,
+      }));
   }
 
   getArtistEvents = (artistName) => {

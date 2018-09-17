@@ -2,11 +2,12 @@
   "name": "friendsurance",
   "version": "0.1.0",
   "private": true,
+  "publicUrl": "https://vladutzik.github.io/artists-events-app",
+  "homepage": "https://vladutzik.github.io/artists-events-app",
   "dependencies": {
     "assembler": "^0.1.3",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
-    "axios-offline-adapter": "https://github.com/dedayoa/axios-offline-adapter.git",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -34,6 +35,7 @@
     "html-webpack-plugin": "2.29.0",
     "humps": "^2.0.1",
     "jest": "20.0.4",
+    "js-base64": "^2.4.9",
     "js-cookie": "^2.2.0",
     "localforage": "^1.7.2",
     "lodash": "^4.17.10",
@@ -117,6 +119,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "@babel/preset-stage-0": "^7.0.0",
     "chai": "^4.1.2",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0"

@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@babel/preset-stage-0@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@babel/preset-stage-0/-/preset-stage-0-7.0.0.tgz#999aaec79ee8f0a763042c68c06539c97c6e0646"
+
 "@babel/runtime@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0.tgz#adeb78fedfc855aa05bc041640f3f6f98e85424c"
@@ -372,13 +376,6 @@ aws-sign2@~0.7.0:
 aws4@^1.6.0, aws4@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
-
-"axios-offline-adapter@https://github.com/dedayoa/axios-offline-adapter.git":
-  version "0.0.2"
-  resolved "https://github.com/dedayoa/axios-offline-adapter.git#944d8b9161bfd7e95fb895cd7131516447a8a67c"
-  dependencies:
-    js-base64 "^2.4.5"
-    localforage "^1.7.1"
 
 axios@^0.18.0:
   version "0.18.0"
@@ -4314,7 +4311,7 @@ jest@20.0.4:
   dependencies:
     jest-cli "^20.0.4"
 
-js-base64@^2.1.8, js-base64@^2.1.9, js-base64@^2.4.5:
+js-base64@^2.1.8, js-base64@^2.1.9, js-base64@^2.4.9:
   version "2.4.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.9.tgz#748911fb04f48a60c4771b375cac45a80df11c03"
 
@@ -4563,7 +4560,7 @@ loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
-localforage@^1.7.1, localforage@^1.7.2:
+localforage@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/localforage/-/localforage-1.7.2.tgz#fa4442602f806edd2bca6a54ab4e656f031f121c"
   dependencies:

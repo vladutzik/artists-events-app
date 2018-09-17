@@ -1,6 +1,8 @@
+const publicUrl = process.env.PUBLIC_URL || '';
+
 export const routes = {
-  index: '/',
-  artist: '/:artistName',
+  index: `${publicUrl}/`,
+  artist: `${publicUrl}/:artistName`,
 };
 
 export const buildUrl = (route, props = {}) => {

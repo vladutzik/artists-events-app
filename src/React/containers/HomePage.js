@@ -7,7 +7,7 @@ import {
 } from 'styled-bootstrap-components';
 
 
-import ArtsitStorage from 'Storage/Artists';
+import ArtsitStorage from 'Storage/artists';
 import SearchBar from 'React/components/searchBar';
 import ArtistCard from 'React/components/artistCard';
 import Routes, { buildUrl } from 'config/routesConfig';
@@ -95,7 +95,7 @@ class App extends React.Component {
             <Row mt="5px">
               {artists.map((artist, key) => (
                 <Column md={4} sm={3} xs={2} key={key}>
-                  <WithLink to={artist.name}>
+                  <WithLink to={artist.queryString || artist.name}>
                     <ArtistCard inline artist={artist} />
                   </WithLink>
                 </Column>
