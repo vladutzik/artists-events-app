@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -7,7 +7,7 @@ import {
 } from 'styled-bootstrap-components';
 
 
-import ArtsitStorage from 'Storage/artists';
+import ArtsitStorage, { removeArtist } from 'Storage/artists';
 import SearchBar from 'React/components/searchBar';
 import ArtistCard from 'React/components/artistCard';
 import Routes, { buildUrl } from 'config/routesConfig';
@@ -70,11 +70,24 @@ class App extends React.Component {
         },
       }));
     });
+  }
 
+  onArtistRemove = (name = 'undefined') => (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    removeArtist(name).then(() => {
+      this.setState(state => ({
+        ...state,
+        artists: {
+          ...state.artists,
+          [name]: undefined,
+        },
+      }));
+    });
   }
 
   render() {
-    const artists = getSortedByDate(Object.values(this.state.artists));
+    const artists = getSortedByDate(Object.values(this.state.artists)).filter(Boolean);
 
     return (
       <Fragment >
@@ -96,7 +109,7 @@ class App extends React.Component {
               {artists.map((artist, key) => (
                 <Column md={4} sm={3} xs={2} key={key}>
                   <WithLink to={artist.queryString || artist.name}>
-                    <ArtistCard inline artist={artist} />
+                    <ArtistCard inline artist={artist} onRemove={this.onArtistRemove(artist.name)} />
                   </WithLink>
                 </Column>
               ))}

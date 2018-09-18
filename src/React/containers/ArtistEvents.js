@@ -5,7 +5,9 @@ import EventDetails from 'React/components/eventDetails';
 import ArtistCard from 'React/components/artistCard';
 import Loading from 'React/components/icons/loading';
 import SearchBar from 'React/components/searchBar';
+import Error404 from 'React/components/404';
 import ArtsitStorage from 'Storage/artists';
+import Routes from 'config/routesConfig';
 
 
 const getEmoji = (emoji) => (<span aria-label="emoji" role="img">{emoji}</span>);
@@ -40,19 +42,22 @@ class App extends React.Component {
           ...artist,
         } : state.artist,
       }));
-    })
+    });
 
     API.getArtistEvents(params.artistName).then(events => {
-      if (!events || typeof events === 'string') return null;
+      if (!events || typeof events === 'string') {
+        return this.setState({ redirect: Routes.index });
+      }
+
       return this.setState(state => ({
         ...state,
         isFetching: false,
         events,
-      }))
+      }));
     });
 
     API.getArtist(params.artistName).then(artist => {
-      if (!artist) return null;
+      if (!artist || !artist.name) return null;
 
       ArtsitStorage.setItem(artist.name, artist);
       
@@ -65,6 +70,11 @@ class App extends React.Component {
 
   render() {
     const { events, artist, isFetching } = this.state;
+
+    if (this.state.redirect) {
+      return (<Error404 timeToRedirect={3} redirectTo={this.state.redirect} />);
+    }
+
     return (
       <Container mt="20px">
         <Row>

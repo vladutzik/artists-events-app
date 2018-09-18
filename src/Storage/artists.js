@@ -1,7 +1,11 @@
 import localforage from 'localforage';
 
-export const ArtsitStorage = localforage.createInstance({
+export const ArtistStorage = localforage.createInstance({
   name: "artists"
 });
 
-export default ArtsitStorage;
+export const removeArtist = (name) => {
+  return ArtistStorage.removeItem(name);
+};
+
+export default ArtistStorage;

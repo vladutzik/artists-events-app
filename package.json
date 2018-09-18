@@ -73,7 +73,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -122,6 +124,7 @@
     "@babel/preset-stage-0": "^7.0.0",
     "chai": "^4.1.2",
     "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0"
+    "enzyme-adapter-react-16": "^1.5.0",
+    "gh-pages": "^2.0.0"
   }
 }

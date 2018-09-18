@@ -9,12 +9,25 @@ import {
 } from 'styled-bootstrap-components';
 import Loading from 'React/components/icons/loading';
 import FacebookIcon from 'React/components/icons/facebook';
+import RemoveIcon from 'React/components/icons/remove';
 
 const CustomCard = styled(Card)`
   display: inline-block;
   max-width: 100%;
   height: auto;
   margin-bottom: ${({ inline }) => (inline ? '15px' : 0)};
+
+  .remove {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    &:hover {
+      fill: darkgray;
+    }
+  }
 `;
 
 const CustomCardBody = styled(CardBody)`
@@ -85,6 +98,10 @@ export default ({ artist, ...props }) => {
           </CardText>
         </WithLink>
       </CustomCardBody>
+
+      {!!props.onRemove && (
+        <RemoveIcon className="remove" onClick={props.onRemove} />
+      )}
     </CustomCard>
   );
 }

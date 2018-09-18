@@ -28,7 +28,10 @@ class SearchBar extends React.Component {
 
   searchArtist = () => {
     const artistName = this.state.keyword;
-    this.setState({ redirect: buildUrl(Routes.artist, { artistName }) })
+    this.setState({ 
+      redirect: buildUrl(Routes.artist, { artistName }),
+      keyword: '',
+    }, () => this.setState({ redirect: undefined }));
   }
 
   render() {
@@ -46,7 +49,7 @@ class SearchBar extends React.Component {
           onKeyPress={this.onEnter}
         />
         <InputGroupAppend>
-          <Button outline primary>Search</Button>
+          <Button outline primary onClick={this.searchArtist}>Search</Button>
         </InputGroupAppend>
       </InputGroup>
     );
